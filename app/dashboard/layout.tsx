@@ -1,9 +1,10 @@
 "use client";
 
-import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
-import { NavigationProvider } from "@/lib/NavigationProvider";
+import Header from "@/components/Header";
+
 import { Authenticated } from "convex/react";
+import { NavigationProvider } from "@/lib/NavigationProvider";
 
 export default function DashboardLayout({
   children,
@@ -14,14 +15,12 @@ export default function DashboardLayout({
     <NavigationProvider>
       <div className="flex h-screen">
         <Authenticated>
-          <h1>
-            <Sidebar />
-          </h1>
+          <Sidebar />
         </Authenticated>
 
-        <div className="flex-1">
+        <div className="flex-1 flex flex-col min-w-0">
           <Header />
-          <main>{children}</main>
+          <main className="flex-1 overflow-y-auto">{children}</main>
         </div>
       </div>
     </NavigationProvider>
